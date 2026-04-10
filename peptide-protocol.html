@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -398,12 +399,14 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--s
   .protocol-grid{grid-template-columns:1fr;}
 }
 </style>
+
 </head>
 <body>
 
 <div id="app">
 
   <!-- TOP BAR -->
+
   <div id="top-bar">
     <div style="display:flex;align-items:center;gap:10px;">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -444,206 +447,210 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--s
   </div>
 
   <!-- PAGES -->
+
   <div id="pages">
 
-    <!-- PAGE 0: HOME -->
-    <div class="page active" id="page-home">
-      <div class="home-hero">
-        <div class="home-title">PEPTIDE<br>PROTOCOL</div>
-        <div class="home-sub">Personal Dosing Dashboard · Active</div>
-      </div>
-      <div class="home-status-row" id="home-status-row"></div>
-      <div class="home-next card" id="home-next-card">
-        <div class="home-next-label">/ Up Next /</div>
-        <div id="home-next-list"></div>
-      </div>
-      <div class="home-grid" id="home-grid"></div>
+```
+<!-- PAGE 0: HOME -->
+<div class="page active" id="page-home">
+  <div class="home-hero">
+    <div class="home-title">PEPTIDE<br>PROTOCOL</div>
+    <div class="home-sub">Personal Dosing Dashboard · Active</div>
+  </div>
+  <div class="home-status-row" id="home-status-row"></div>
+  <div class="home-next card" id="home-next-card">
+    <div class="home-next-label">/ Up Next /</div>
+    <div id="home-next-list"></div>
+  </div>
+  <div class="home-grid" id="home-grid"></div>
+</div>
+
+<!-- PAGE 1: SCHEDULE + LOG -->
+<div class="page" id="page-schedule">
+  <div class="sec-label">Schedule</div>
+  <div class="card" style="padding:14px;">
+    <div class="cal-header">
+      <button class="cal-nav" onclick="calPrev()">‹</button>
+      <div class="cal-title" id="cal-title"></div>
+      <button class="cal-nav" onclick="calNext()">›</button>
     </div>
-
-    <!-- PAGE 1: SCHEDULE + LOG -->
-    <div class="page" id="page-schedule">
-      <div class="sec-label">Schedule</div>
-      <div class="card" style="padding:14px;">
-        <div class="cal-header">
-          <button class="cal-nav" onclick="calPrev()">‹</button>
-          <div class="cal-title" id="cal-title"></div>
-          <button class="cal-nav" onclick="calNext()">›</button>
-        </div>
-        <div class="cal-dow-row">
-          <div class="cal-dow">Su</div><div class="cal-dow">Mo</div><div class="cal-dow">Tu</div>
-          <div class="cal-dow">We</div><div class="cal-dow">Th</div><div class="cal-dow">Fr</div><div class="cal-dow">Sa</div>
-        </div>
-        <div class="cal-grid" id="cal-grid"></div>
-        <div class="cal-legend">
-          <div class="cal-legend-item"><div class="cal-legend-dot" style="background:rgba(0,220,200,0.6)"></div>Reta · 15u</div>
-          <div class="cal-legend-item"><div class="cal-legend-dot" style="background:rgba(167,139,250,0.6)"></div>GHK · 4u</div>
-          <div class="cal-legend-item"><div class="cal-legend-dot" style="background:rgba(251,113,133,0.6)"></div>MOTS · 22u · 3:30PM</div>
-          <div class="cal-legend-item"><div class="cal-legend-dot" style="background:rgba(245,166,35,0.6)"></div>CJC · 2u · 8PM</div>
-          <div class="cal-legend-item"><span style="font-size:10px;color:var(--gold)">✓</span> Logged</div>
-        </div>
-      </div>
-
-      <div class="sec-label">Log Dose</div>
-      <div class="log-grid">
-        <div class="log-group"><button class="log-btn-add" onclick="logDose('Retatrutide')" style="color:#00dcc8;">⊕ Reta</button><button class="log-btn-sub" onclick="subtractDose('Retatrutide')">−</button></div>
-        <div class="log-group"><button class="log-btn-add" onclick="logDose('GHK-Cu')" style="color:#a78bfa;">⊕ GHK-Cu</button><button class="log-btn-sub" onclick="subtractDose('GHK-Cu')">−</button></div>
-        <div class="log-group"><button class="log-btn-add" onclick="logDose('MOTS-C')" style="color:#fb7185;">⊕ MOTS-C</button><button class="log-btn-sub" onclick="subtractDose('MOTS-C')">−</button></div>
-        <div class="log-group"><button class="log-btn-add" onclick="logDose('CJC-1295+Ipa-PM')" style="color:#f5a623;">⊕ CJC+Ipa</button><button class="log-btn-sub" onclick="subtractDose('CJC-1295+Ipa-PM')">−</button></div>
-      </div>
-      <button onclick="openBackdate()" style="width:100%;background:#0f0f0f;border:1px solid var(--gold-border);border-radius:8px;color:var(--text-dim);font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:10px;cursor:pointer;-webkit-appearance:none;appearance:none;margin-top:4px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--gold-border)';this.style.color='var(--text-dim)'">⊕ Log Missed / Backdated Dose</button>
+    <div class="cal-dow-row">
+      <div class="cal-dow">Su</div><div class="cal-dow">Mo</div><div class="cal-dow">Tu</div>
+      <div class="cal-dow">We</div><div class="cal-dow">Th</div><div class="cal-dow">Fr</div><div class="cal-dow">Sa</div>
     </div>
-
-    <!-- PAGE 2: DOSE LOG -->
-    <div class="page" id="page-log">
-      <div class="sec-label">Dose Log</div>
-      <div class="card">
-        <div class="log-summary" id="log-summary"></div>
-        <div class="dose-log-filters">
-          <button class="filter-btn active-all" id="f-all" onclick="setFilter('all')">All</button>
-          <button class="filter-btn" id="f-reta" onclick="setFilter('Retatrutide')">Reta</button>
-          <button class="filter-btn" id="f-ghk" onclick="setFilter('GHK-Cu')">GHK</button>
-          <button class="filter-btn" id="f-mots" onclick="setFilter('MOTS-C')">MOTS</button>
-          <button class="filter-btn" id="f-cjc-am" onclick="setFilter('CJC-1295+Ipa-AM')">CJC AM</button>
-          <button class="filter-btn" id="f-cjc-pm" onclick="setFilter('CJC-1295+Ipa-PM')">CJC PM</button>
-        </div>
-        <div class="dose-log-list" id="dose-log-list"></div>
-      </div>
+    <div class="cal-grid" id="cal-grid"></div>
+    <div class="cal-legend">
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:rgba(0,220,200,0.6)"></div>Reta · 15u</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:rgba(167,139,250,0.6)"></div>GHK · 4u</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:rgba(251,113,133,0.6)"></div>MOTS · 22u · 3:30PM</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:rgba(245,166,35,0.6)"></div>CJC · 2u · 8PM</div>
+      <div class="cal-legend-item"><span style="font-size:10px;color:var(--gold)">✓</span> Logged</div>
     </div>
+  </div>
 
-    <!-- PAGE 3: MONTHLY STATS -->
-    <div class="page" id="page-stats">
-      <div class="sec-label">Monthly Stats</div>
-      <div class="card" id="monthly-stats-card">
-        <div id="monthly-stats"></div>
-      </div>
+  <div class="sec-label">Log Dose</div>
+  <div class="log-grid">
+    <div class="log-group"><button class="log-btn-add" onclick="logDose('Retatrutide')" style="color:#00dcc8;">⊕ Reta</button><button class="log-btn-sub" onclick="subtractDose('Retatrutide')">−</button></div>
+    <div class="log-group"><button class="log-btn-add" onclick="logDose('GHK-Cu')" style="color:#a78bfa;">⊕ GHK-Cu</button><button class="log-btn-sub" onclick="subtractDose('GHK-Cu')">−</button></div>
+    <div class="log-group"><button class="log-btn-add" onclick="logDose('MOTS-C')" style="color:#fb7185;">⊕ MOTS-C</button><button class="log-btn-sub" onclick="subtractDose('MOTS-C')">−</button></div>
+    <div class="log-group"><button class="log-btn-add" onclick="logDose('CJC-1295+Ipa-PM')" style="color:#f5a623;">⊕ CJC+Ipa</button><button class="log-btn-sub" onclick="subtractDose('CJC-1295+Ipa-PM')">−</button></div>
+  </div>
+  <button onclick="openBackdate()" style="width:100%;background:#0f0f0f;border:1px solid var(--gold-border);border-radius:8px;color:var(--text-dim);font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:10px;cursor:pointer;-webkit-appearance:none;appearance:none;margin-top:4px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--gold-border)';this.style.color='var(--text-dim)'">⊕ Log Missed / Backdated Dose</button>
+</div>
+
+<!-- PAGE 2: DOSE LOG -->
+<div class="page" id="page-log">
+  <div class="sec-label">Dose Log</div>
+  <div class="card">
+    <div class="log-summary" id="log-summary"></div>
+    <div class="dose-log-filters">
+      <button class="filter-btn active-all" id="f-all" onclick="setFilter('all')">All</button>
+      <button class="filter-btn" id="f-reta" onclick="setFilter('Retatrutide')">Reta</button>
+      <button class="filter-btn" id="f-ghk" onclick="setFilter('GHK-Cu')">GHK</button>
+      <button class="filter-btn" id="f-mots" onclick="setFilter('MOTS-C')">MOTS</button>
+      <button class="filter-btn" id="f-cjc-am" onclick="setFilter('CJC-1295+Ipa-AM')">CJC AM</button>
+      <button class="filter-btn" id="f-cjc-pm" onclick="setFilter('CJC-1295+Ipa-PM')">CJC PM</button>
     </div>
+    <div class="dose-log-list" id="dose-log-list"></div>
+  </div>
+</div>
 
-    <!-- PAGE 4: VIALS + ADHERENCE -->
-    <div class="page" id="page-vials">
-      <div class="sec-label">Active Vials</div>
-      <div class="card" id="vials-content"></div>
-      <div class="sec-label">Adherence</div>
-      <div class="card" id="adherence-content"></div>
-    </div>
+<!-- PAGE 3: MONTHLY STATS -->
+<div class="page" id="page-stats">
+  <div class="sec-label">Monthly Stats</div>
+  <div class="card" id="monthly-stats-card">
+    <div id="monthly-stats"></div>
+  </div>
+</div>
 
-    <!-- PAGE 5: WEIGHT LOG -->
-    <div class="page" id="page-weight">
-      <div class="sec-label">Weight Log</div>
-      <div class="card">
-        <div class="weight-input-lbl">Log Today's Weight</div>
-        <div class="weight-input-row">
-          <input class="weight-input" type="number" id="weight-input" placeholder="0.0" step="0.1" min="50" max="700" inputmode="decimal">
-          <div class="unit-toggle">
-            <button class="ut active" id="unit-lbs" onclick="setUnit('lbs')">lbs</button>
-            <button class="ut" id="unit-kg" onclick="setUnit('kg')">kg</button>
-          </div>
-        </div>
-        <button class="weight-log-btn" onclick="logWeight()">⊕ Log Weight</button>
-        <div class="weight-stats">
-          <div class="wstat"><div class="wstat-val" id="ws-cur">—</div><div class="wstat-lbl">Current</div></div>
-          <div class="wstat"><div class="wstat-val" id="ws-start">—</div><div class="wstat-lbl">Starting</div></div>
-          <div class="wstat"><div class="wstat-val" id="ws-delta">—</div><div class="wstat-lbl">Total Δ</div></div>
-          <div class="wstat"><div class="wstat-val" id="ws-low">—</div><div class="wstat-lbl">Lowest</div></div>
-        </div>
-        <div class="weight-chart"><svg id="weight-svg" preserveAspectRatio="none"></svg></div>
-        <div class="weight-history" id="weight-history"></div>
+<!-- PAGE 4: VIALS + ADHERENCE -->
+<div class="page" id="page-vials">
+  <div class="sec-label">Active Vials</div>
+  <div class="card" id="vials-content"></div>
+  <div class="sec-label">Adherence</div>
+  <div class="card" id="adherence-content"></div>
+</div>
+
+<!-- PAGE 5: WEIGHT LOG -->
+<div class="page" id="page-weight">
+  <div class="sec-label">Weight Log</div>
+  <div class="card">
+    <div class="weight-input-lbl">Log Today's Weight</div>
+    <div class="weight-input-row">
+      <input class="weight-input" type="number" id="weight-input" placeholder="0.0" step="0.1" min="50" max="700" inputmode="decimal">
+      <div class="unit-toggle">
+        <button class="ut active" id="unit-lbs" onclick="setUnit('lbs')">lbs</button>
+        <button class="ut" id="unit-kg" onclick="setUnit('kg')">kg</button>
       </div>
     </div>
+    <button class="weight-log-btn" onclick="logWeight()">⊕ Log Weight</button>
+    <div class="weight-stats">
+      <div class="wstat"><div class="wstat-val" id="ws-cur">—</div><div class="wstat-lbl">Current</div></div>
+      <div class="wstat"><div class="wstat-val" id="ws-start">—</div><div class="wstat-lbl">Starting</div></div>
+      <div class="wstat"><div class="wstat-val" id="ws-delta">—</div><div class="wstat-lbl">Total Δ</div></div>
+      <div class="wstat"><div class="wstat-val" id="ws-low">—</div><div class="wstat-lbl">Lowest</div></div>
+    </div>
+    <div class="weight-chart"><svg id="weight-svg" preserveAspectRatio="none"></svg></div>
+    <div class="weight-history" id="weight-history"></div>
+  </div>
+</div>
 
-    <!-- PAGE 6: PROTOCOL + TITRATION -->
-    <div class="page" id="page-protocol">
-      <div class="sec-label">Protocol Duration</div>
-      <div class="card">
-        <div class="protocol-grid" id="protocol-grid"></div>
-      </div>
+<!-- PAGE 6: PROTOCOL + TITRATION -->
+<div class="page" id="page-protocol">
+  <div class="sec-label">Protocol Duration</div>
+  <div class="card">
+    <div class="protocol-grid" id="protocol-grid"></div>
+  </div>
 
-      <div class="sec-label">Wind-Down Timeline</div>
-      <div class="card">
-        <div class="timeline-title">RECOMMENDED STOP DATES</div>
-        <div class="timeline-row">
-          <div class="timeline-date">Late April<br>~Apr 27</div>
-          <div class="timeline-content">
-            <div class="timeline-action">Stop GHK-Cu + MOTS-C together</div>
-            <div class="timeline-note">Both hit their 8-week mark around this date. Stop simultaneously for a clean reset. Off period: 4 weeks minimum.</div>
-          </div>
-        </div>
-        <div class="timeline-row">
-          <div class="timeline-date">Mid-Late May</div>
-          <div class="timeline-content">
-            <div class="timeline-action">Begin tapering Retatrutide</div>
-            <div class="timeline-note">Use a 4–6 week wind-down protocol. Reduce dose gradually, targeting full stop around late June.</div>
-          </div>
-        </div>
-        <div class="timeline-row">
-          <div class="timeline-date">Late June<br>~Jun 16</div>
-          <div class="timeline-content">
-            <div class="timeline-action">Stop CJC-1295 + Ipamorelin</div>
-            <div class="timeline-note">Natural 12-week mark from Mar 24 start. Stop to prevent GH receptor desensitization. Off period: 4–8 weeks.</div>
-          </div>
-        </div>
-        <div class="timeline-row">
-          <div class="timeline-date">Late June</div>
-          <div class="timeline-content">
-            <div class="timeline-action">Full protocol break + reassess</div>
-            <div class="timeline-note">Take a proper break, evaluate results, then decide what to restart and at what dose based on goals and body composition changes.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="sec-label">Natural Stop Windows</div>
-      <div class="card">
-        <table class="cycle-table">
-          <thead><tr><th>Compound</th><th>Started</th><th>Stop Window (8–12wk)</th></tr></thead>
-          <tbody>
-            <tr><td>Retatrutide</td><td>Mar 1</td><td>Late Apr – Late May</td></tr>
-            <tr><td>GHK-Cu</td><td>Mar 2</td><td>Late Apr – Late May</td></tr>
-            <tr><td>MOTS-C</td><td>Mar 11</td><td>May 6 – June 5</td></tr>
-            <tr><td>CJC + Ipa</td><td>Mar 24</td><td>Mid June – Late June</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="sec-label">Off-Cycle Guidelines</div>
-      <div class="card">
-        <div class="stat-row"><span class="stat-row-label">GHK-Cu &amp; MOTS-C</span><span class="stat-row-val">4 wks min off</span></div>
-        <div class="stat-row"><span class="stat-row-label">CJC + Ipamorelin</span><span class="stat-row-val">4–8 wks off</span></div>
-        <div class="stat-row"><span class="stat-row-label">Retatrutide</span><span class="stat-row-val">Goal-dependent</span></div>
+  <div class="sec-label">Wind-Down Timeline</div>
+  <div class="card">
+    <div class="timeline-title">RECOMMENDED STOP DATES</div>
+    <div class="timeline-row">
+      <div class="timeline-date">Late April<br>~Apr 27</div>
+      <div class="timeline-content">
+        <div class="timeline-action">Stop GHK-Cu + MOTS-C together</div>
+        <div class="timeline-note">Both hit their 8-week mark around this date. Stop simultaneously for a clean reset. Off period: 4 weeks minimum.</div>
       </div>
     </div>
-
-    <!-- PAGE 7: PEPTIDE REFERENCE -->
-    <div class="page" id="page-ref">
-      <div class="sec-label">Peptide Reference</div>
-      <div class="info-grid">
-        <div class="info-card">
-          <div class="info-header"><div class="info-icon icon-reta">🔬</div><div><div class="info-title">Retatrutide</div><div class="info-subtitle">GIP / GLP-1 / GLUCAGON AGONIST</div></div></div>
-          <div class="info-section"><div class="info-sec-title sec-teal">Benefits</div><ul class="info-list before-teal"><li>Significant body weight reduction via triple receptor action</li><li>Improved insulin sensitivity and glycemic control</li><li>Reduction in visceral and hepatic fat</li><li>Potential cardiovascular risk reduction</li><li>Appetite suppression and improved satiety</li><li>Possible muscle preservation during fat loss</li></ul></div>
-          <div class="pc-grid"><div><div class="pc-title p">PROS</div><ul class="info-list before-teal"><li>Most potent weight-loss peptide class</li><li>Twice-weekly schedule</li><li>Multi-pathway metabolic action</li></ul></div><div><div class="pc-title c">CONS</div><ul class="info-list before-teal"><li>GI side effects possible</li><li>Still in clinical development</li><li>Careful titration required</li></ul></div></div>
-        </div>
-        <div class="info-card">
-          <div class="info-header"><div class="info-icon icon-ghk">✦</div><div><div class="info-title">GHK-Cu</div><div class="info-subtitle">COPPER PEPTIDE · TISSUE REMODELING</div></div></div>
-          <div class="info-section"><div class="info-sec-title sec-purple">Benefits</div><ul class="info-list before-purple"><li>Stimulates collagen and elastin synthesis</li><li>Promotes wound healing and tissue remodeling</li><li>Anti-inflammatory gene expression modulation</li><li>Neurotrophin support — neuroprotective effects</li><li>Hair follicle stimulation and thickening</li><li>Antioxidant upregulation via SOD</li></ul></div>
-          <div class="pc-grid"><div><div class="pc-title p">PROS</div><ul class="info-list before-purple"><li>Excellent safety profile</li><li>Multi-system regenerative effects</li><li>Well-studied in vitro</li></ul></div><div><div class="pc-title c">CONS</div><ul class="info-list before-purple"><li>Limited large human RCTs</li><li>Daily injection schedule</li><li>Monitor copper levels long-term</li></ul></div></div>
-        </div>
-        <div class="info-card">
-          <div class="info-header"><div class="info-icon icon-mots">⚡</div><div><div class="info-title">MOTS-C</div><div class="info-subtitle">MITOCHONDRIAL PEPTIDE · METABOLIC</div></div></div>
-          <div class="info-section"><div class="info-sec-title sec-rose">Benefits</div><ul class="info-list before-rose"><li>Enhances mitochondrial function and energy metabolism</li><li>Improves insulin sensitivity and glucose uptake</li><li>Supports fat oxidation and lean body composition</li><li>Exercise mimetic — activates AMPK pathway</li><li>Anti-aging effects via mitochondrial regulation</li><li>May improve physical endurance and stamina</li></ul></div>
-          <div class="pc-grid"><div><div class="pc-title p">PROS</div><ul class="info-list before-rose"><li>Synergistic with Retatrutide</li><li>MWF schedule</li><li>Favorable safety profile</li></ul></div><div><div class="pc-title c">CONS</div><ul class="info-list before-rose"><li>Limited long-term human data</li><li>Requires refrigeration</li><li>Research still emerging</li></ul></div></div>
-        </div>
-        <div class="info-card">
-          <div class="info-header"><div class="info-icon icon-cjc">🧬</div><div><div class="info-title">CJC-1295 + Ipamorelin</div><div class="info-subtitle">GHRH + GHRP · GH SECRETAGOGUE BLEND</div></div></div>
-          <div class="info-section"><div class="info-sec-title" style="color:#f5a623;">Benefits</div><ul class="info-list"><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Stimulates natural GH release via dual pathway</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Supports muscle growth, recovery, and body recomposition</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Promotes fat loss, especially visceral and subcutaneous</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Improves sleep quality and deep sleep duration</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Enhances collagen synthesis and connective tissue repair</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Anti-aging effects through IGF-1 upregulation</li></ul></div>
-          <div class="pc-grid">
-            <div><div class="pc-title p">PROS</div><ul class="info-list"><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>50/50 blend maximizes GH pulse</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>No DAC — cleaner half-life</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Well-tolerated, no cortisol spike</li></ul></div>
-            <div><div class="pc-title c">CONS</div><ul class="info-list"><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Daily injection schedule</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Water retention possible</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Requires refrigeration</li></ul></div>
-          </div>
-        </div>
+    <div class="timeline-row">
+      <div class="timeline-date">Mid-Late May</div>
+      <div class="timeline-content">
+        <div class="timeline-action">Begin tapering Retatrutide</div>
+        <div class="timeline-note">Use a 4–6 week wind-down protocol. Reduce dose gradually, targeting full stop around late June.</div>
       </div>
     </div>
+    <div class="timeline-row">
+      <div class="timeline-date">Late June<br>~Jun 16</div>
+      <div class="timeline-content">
+        <div class="timeline-action">Stop CJC-1295 + Ipamorelin</div>
+        <div class="timeline-note">Natural 12-week mark from Mar 24 start. Stop to prevent GH receptor desensitization. Off period: 4–8 weeks.</div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-date">Late June</div>
+      <div class="timeline-content">
+        <div class="timeline-action">Full protocol break + reassess</div>
+        <div class="timeline-note">Take a proper break, evaluate results, then decide what to restart and at what dose based on goals and body composition changes.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label">Natural Stop Windows</div>
+  <div class="card">
+    <table class="cycle-table">
+      <thead><tr><th>Compound</th><th>Started</th><th>Stop Window (8–12wk)</th></tr></thead>
+      <tbody>
+        <tr><td>Retatrutide</td><td>Mar 1</td><td>Late Apr – Late May</td></tr>
+        <tr><td>GHK-Cu</td><td>Mar 2</td><td>Late Apr – Late May</td></tr>
+        <tr><td>MOTS-C</td><td>Mar 11</td><td>May 6 – June 5</td></tr>
+        <tr><td>CJC + Ipa</td><td>Mar 24</td><td>Mid June – Late June</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-label">Off-Cycle Guidelines</div>
+  <div class="card">
+    <div class="stat-row"><span class="stat-row-label">GHK-Cu &amp; MOTS-C</span><span class="stat-row-val">4 wks min off</span></div>
+    <div class="stat-row"><span class="stat-row-label">CJC + Ipamorelin</span><span class="stat-row-val">4–8 wks off</span></div>
+    <div class="stat-row"><span class="stat-row-label">Retatrutide</span><span class="stat-row-val">Goal-dependent</span></div>
+  </div>
+</div>
+
+<!-- PAGE 7: PEPTIDE REFERENCE -->
+<div class="page" id="page-ref">
+  <div class="sec-label">Peptide Reference</div>
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-header"><div class="info-icon icon-reta">🔬</div><div><div class="info-title">Retatrutide</div><div class="info-subtitle">GIP / GLP-1 / GLUCAGON AGONIST</div></div></div>
+      <div class="info-section"><div class="info-sec-title sec-teal">Benefits</div><ul class="info-list before-teal"><li>Significant body weight reduction via triple receptor action</li><li>Improved insulin sensitivity and glycemic control</li><li>Reduction in visceral and hepatic fat</li><li>Potential cardiovascular risk reduction</li><li>Appetite suppression and improved satiety</li><li>Possible muscle preservation during fat loss</li></ul></div>
+      <div class="pc-grid"><div><div class="pc-title p">PROS</div><ul class="info-list before-teal"><li>Most potent weight-loss peptide class</li><li>Twice-weekly schedule</li><li>Multi-pathway metabolic action</li></ul></div><div><div class="pc-title c">CONS</div><ul class="info-list before-teal"><li>GI side effects possible</li><li>Still in clinical development</li><li>Careful titration required</li></ul></div></div>
+    </div>
+    <div class="info-card">
+      <div class="info-header"><div class="info-icon icon-ghk">✦</div><div><div class="info-title">GHK-Cu</div><div class="info-subtitle">COPPER PEPTIDE · TISSUE REMODELING</div></div></div>
+      <div class="info-section"><div class="info-sec-title sec-purple">Benefits</div><ul class="info-list before-purple"><li>Stimulates collagen and elastin synthesis</li><li>Promotes wound healing and tissue remodeling</li><li>Anti-inflammatory gene expression modulation</li><li>Neurotrophin support — neuroprotective effects</li><li>Hair follicle stimulation and thickening</li><li>Antioxidant upregulation via SOD</li></ul></div>
+      <div class="pc-grid"><div><div class="pc-title p">PROS</div><ul class="info-list before-purple"><li>Excellent safety profile</li><li>Multi-system regenerative effects</li><li>Well-studied in vitro</li></ul></div><div><div class="pc-title c">CONS</div><ul class="info-list before-purple"><li>Limited large human RCTs</li><li>Daily injection schedule</li><li>Monitor copper levels long-term</li></ul></div></div>
+    </div>
+    <div class="info-card">
+      <div class="info-header"><div class="info-icon icon-mots">⚡</div><div><div class="info-title">MOTS-C</div><div class="info-subtitle">MITOCHONDRIAL PEPTIDE · METABOLIC</div></div></div>
+      <div class="info-section"><div class="info-sec-title sec-rose">Benefits</div><ul class="info-list before-rose"><li>Enhances mitochondrial function and energy metabolism</li><li>Improves insulin sensitivity and glucose uptake</li><li>Supports fat oxidation and lean body composition</li><li>Exercise mimetic — activates AMPK pathway</li><li>Anti-aging effects via mitochondrial regulation</li><li>May improve physical endurance and stamina</li></ul></div>
+      <div class="pc-grid"><div><div class="pc-title p">PROS</div><ul class="info-list before-rose"><li>Synergistic with Retatrutide</li><li>MWF schedule</li><li>Favorable safety profile</li></ul></div><div><div class="pc-title c">CONS</div><ul class="info-list before-rose"><li>Limited long-term human data</li><li>Requires refrigeration</li><li>Research still emerging</li></ul></div></div>
+    </div>
+    <div class="info-card">
+      <div class="info-header"><div class="info-icon icon-cjc">🧬</div><div><div class="info-title">CJC-1295 + Ipamorelin</div><div class="info-subtitle">GHRH + GHRP · GH SECRETAGOGUE BLEND</div></div></div>
+      <div class="info-section"><div class="info-sec-title" style="color:#f5a623;">Benefits</div><ul class="info-list"><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Stimulates natural GH release via dual pathway</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Supports muscle growth, recovery, and body recomposition</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Promotes fat loss, especially visceral and subcutaneous</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Improves sleep quality and deep sleep duration</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Enhances collagen synthesis and connective tissue repair</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Anti-aging effects through IGF-1 upregulation</li></ul></div>
+      <div class="pc-grid">
+        <div><div class="pc-title p">PROS</div><ul class="info-list"><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>50/50 blend maximizes GH pulse</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>No DAC — cleaner half-life</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Well-tolerated, no cortisol spike</li></ul></div>
+        <div><div class="pc-title c">CONS</div><ul class="info-list"><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Daily injection schedule</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Water retention possible</li><li style="padding-left:13px;position:relative"><span style="position:absolute;left:0;top:5px;font-size:8px;color:#f5a623">▸</span>Requires refrigeration</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+```
 
   </div><!-- /pages -->
 
   <!-- BOTTOM NAV -->
+
   <div id="bottom-nav" style="position:relative;flex-shrink:0;">
     <button class="nav-btn active" id="nav-home" onclick="goTo(0)"><span class="nav-icon">⌂</span><span class="nav-label">Home</span></button>
     <button class="nav-btn" id="nav-schedule" onclick="goTo(1)"><span class="nav-icon">📅</span><span class="nav-label">Schedule</span></button>
@@ -658,6 +665,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--s
 </div><!-- /app -->
 
 <!-- BACKDATE MODAL -->
+
 <div class="modal-overlay" id="backdate-overlay" onclick="closeBackdate(event)">
   <div class="modal">
     <div class="modal-handle"></div>
@@ -1188,5 +1196,6 @@ updateClock();renderAll();
 setInterval(updateClock,10000);
 setInterval(renderCalendar,60000);
 </script>
+
 </body>
 </html>
